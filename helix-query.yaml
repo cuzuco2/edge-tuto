@@ -1,7 +1,5 @@
 indices:
-  en:
-    include:
-      - *
+  /:
     target: /query-index.json
     properties:
       lastModified:
