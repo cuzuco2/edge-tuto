@@ -1,0 +1,7 @@
+.simplemenu.block > div:first-child {
+   // display: none;
+}
+
+.simplemenu.block {
+    //display: flex;
+ }

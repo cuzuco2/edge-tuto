@@ -85,6 +85,10 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function alertClick(){
+  console.log('alert icon was clicked');
+}
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -135,8 +139,11 @@ export default async function decorate(block) {
     // prevent mobile nav behavior on window resize
     toggleMenu(nav, navSections, isDesktop.matches);
     isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
-
     decorateIcons(nav);
+
+    const alertIcon = nav.querySelector('.icon.icon-alert img');
+   // alertIcon.addEventListener('click',alertClick);
+
     const navWrapper = document.createElement('div');
     navWrapper.className = 'nav-wrapper';
     navWrapper.append(nav);
