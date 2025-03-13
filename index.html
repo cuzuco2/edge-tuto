@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INP Test Page</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>INP Test Page</h1>
+
+    <button id="long-task-button">Trigger Long Task</button>
+    <button id="many-elements-button">Create Many Elements</button>
+    <button id="complex-layout-button">Trigger Complex Layout</button>
+
+    <div id="output"></div>
+
+    <script>
+        // Function to simulate a long-running task
+        function longTask() {
+            let startTime = performance.now();
+            while (performance.now() - startTime < 200) {
+                // Simulate busy work
+                let x = 0;
+                for (let i = 0; i < 1000000; i++) {
+                    x++;
+                }
+            }
+            document.getElementById("output").textContent = "Long task finished!";
+        }
+
+        // Function to create many DOM elements
+        function createManyElements() {
+            const container = document.createElement("div");
+            for (let i = 0; i < 500; i++) {
+                const element = document.createElement("p");
+                element.textContent = "Element " + i;
+                container.appendChild(element);
+            }
+            document.body.appendChild(container);
+            document.getElementById("output").textContent = "Elements created!";
+        }
+
+        // Function to trigger complex layout calculation
+        function triggerComplexLayout() {
+            const container = document.createElement("div");
+            container.style.display = "grid";
+            container.style.gridTemplateColumns = "repeat(10, 1fr)";
+            for (let i = 0; i < 100; i++) {
+                const element = document.createElement("div");
+                element.style.height = Math.random() * 100 + "px";
+                container.appendChild(element);
+            }
+            document.body.appendChild(container);
+            document.getElementById("output").textContent = "Layout triggered!";
+        }
+
+        // Event listeners
+        document.getElementById("long-task-button").addEventListener("click", longTask);
+        document.getElementById("many-elements-button").addEventListener("click", createManyElements);
+        document.getElementById("complex-layout-button").addEventListener("click", triggerComplexLayout);
+    </script>
+</body>
+</html>
